@@ -61,7 +61,7 @@ function notAuthorozed() {
   function logIn(event) {
     event.preventDefault();
 
-    if (loginInput.value) {
+    if (loginInput.value.trim()) {
       login = loginInput.value;
       localStorage.setItem('Delivery', login);
       toggleModalAuth();
