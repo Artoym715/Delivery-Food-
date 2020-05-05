@@ -25,7 +25,7 @@ function toggleModalAuth() {
 }
 
 
-
+// Если пользователь авторизован
 function authorozed() {
 
   function logOut() {
@@ -51,6 +51,8 @@ function authorozed() {
   buttonOut.addEventListener('click', logOut)
 }
 
+// Если пользователь не авторизован
+
 function notAuthorozed() {
   console.log('Не авторизован');
 
@@ -71,6 +73,7 @@ function notAuthorozed() {
   logInForm.addEventListener('submit', logIn)
 }
 
+//Проверка на авторизацию 
 function checkAuth() {
   if (login) {
     authorozed();
