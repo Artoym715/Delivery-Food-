@@ -22,6 +22,7 @@ let login = localStorage.getItem('Delivery');
 
 function toggleModalAuth() {
   modalAuth.classList.toggle('is-open');
+  loginInput.style.borderColor = '';
 }
 
 
@@ -54,18 +55,25 @@ function authorozed() {
 // Если пользователь не авторизован
 
 function notAuthorozed() {
+
   console.log('Не авторизован');
 
   function logIn(event) {
     event.preventDefault();
-    login = loginInput.value;
-    localStorage.setItem('Delivery', login);
-    toggleModalAuth();
-    buttonAuth.removeEventListener('click', toggleModalAuth);
-    closeAuth.removeEventListener('click', toggleModalAuth);
-    logInForm.removeEventListener('submit', logIn);
-    logInForm.reset();
-    checkAuth();
+
+    if (loginInput.value) {
+      login = loginInput.value;
+      localStorage.setItem('Delivery', login);
+      toggleModalAuth();
+      buttonAuth.removeEventListener('click', toggleModalAuth);
+      closeAuth.removeEventListener('click', toggleModalAuth);
+      logInForm.removeEventListener('submit', logIn);
+      logInForm.reset();
+      checkAuth();
+    } else {
+      loginInput.style.borderColor = 'red';
+    }
+
   }
 
   buttonAuth.addEventListener('click', toggleModalAuth);
@@ -79,6 +87,7 @@ function checkAuth() {
     authorozed();
   } else {
     notAuthorozed();
+
   }
 }
 
