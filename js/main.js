@@ -47,9 +47,8 @@ function authorozed() {
     userName.style.display = '';
     buttonOut.style.display = '';
     buttonOut.removeEventListener('click', logOut);
-
     checkAuth();
-
+    returnMain();
   }
 
   console.log('Авторизован');
@@ -181,17 +180,20 @@ function openGoods(event) {
 
 }
 
+function returnMain() {
+  containerPromo.classList.remove('hide')
+  restaurants.classList.remove('hide')
+  menu.classList.add('hide')
+}
+
 cartButton.addEventListener("click", toggleModal);
 
 close.addEventListener("click", toggleModal);
 
 cardsRestaurants.addEventListener('click', openGoods);
 
-logo.addEventListener('click', function () {
-  containerPromo.classList.remove('hide')
-  restaurants.classList.remove('hide')
-  menu.classList.add('hide')
-})
+
+logo.addEventListener('click', returnMain);
 
 checkAuth();
 
