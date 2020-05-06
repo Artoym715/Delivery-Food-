@@ -190,3 +190,8 @@ checkAuth();
 createCardRestaurant();
 createCardRestaurant();
 createCardRestaurant();
+
+new Swiper('.swiper-container', {
+  loop: true,
+  autoplay: true,
+})
