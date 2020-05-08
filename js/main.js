@@ -31,6 +31,22 @@ let login = localStorage.getItem('Delivery');
 
 const cart = [];
 
+const loadCart = function () {
+
+  if (localStorage.getItem(login)) {
+    JSON.parse(localStorage.getItem(login)).forEach(function (item) {
+      cart.push(item);
+    })
+
+  }
+
+}
+
+const saveCart = function () {
+  localStorage.setItem(login, JSON.stringify(cart))
+
+}
+
 const getData = async function (url) {
 
   const response = await fetch(url);
@@ -81,7 +97,8 @@ function authorozed() {
   buttonOut.style.display = 'flex';
   cartButton.style.display = 'flex';
 
-  buttonOut.addEventListener('click', logOut)
+  buttonOut.addEventListener('click', logOut);
+  loadCart();
 };
 
 // Если пользователь не авторизован
@@ -267,7 +284,7 @@ function addToCart(event) {
     }
 
   }
-
+  saveCart();
 }
 
 function renderCart() {
@@ -322,7 +339,7 @@ function changeCount(event) {
     if (target.classList.contains('counter-plus')) food.count++;
     renderCart();
   }
-
+  saveCart();
 }
 
 function init() {
